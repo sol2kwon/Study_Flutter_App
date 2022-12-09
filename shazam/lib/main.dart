@@ -128,7 +128,72 @@ class SecondTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('두번째 페이지'));
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [Colors.blue[300]!, Colors.blue[900]!],
+        ),
+      ),
+      child: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          DefaultTabController.of(context)!.animateTo(0);
+                        },
+                        child: Icon(
+                          Icons.person,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        "라이브러리",
+                        style: TextStyle(color: Colors.white),
+                      )
+                    ],
+                  ),
+                  //ainAxisAlignment.spaceBetween 대신 여기에 Spacer() 사용해도 괜찮음.
+                  Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          DefaultTabController.of(context)!.animateTo(2);
+                        },
+                        child: Icon(
+                          Icons.show_chart,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        "차트",
+                        style: TextStyle(color: Colors.white),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Text(
+              "Shazam하려면 탭하세요",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
 
