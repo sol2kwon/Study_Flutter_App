@@ -289,6 +289,98 @@ class ThirdTab extends StatelessWidget {
       ],
     };
 
-    return Center(child: Text('세번째 페이지'));
+    return SafeArea(
+        child: Column(
+      children: [
+        Text(
+          "차트",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        ),
+        SizedBox(
+          height: 16,
+        ),
+        Expanded(
+          child: ListView(
+            children: [
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 180,
+                    color: Colors.purple[900],
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.white),
+                          ),
+                          child: Text(
+                            "국가 및 도시별 차트",
+                            style: TextStyle(
+                              color: Colors.purple[900],
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        "전 세계",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              Container(
+                width: double.infinity,
+                height: 8,
+                color: Colors.grey[400],
+              ),
+              Row(
+                children: [
+                  Text(
+                    "대한민국차트",
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  Spacer(),
+                  Text(
+                    "모두 보기",
+                    style: TextStyle(color: Colors.blue),
+                  )
+                ],
+              ),
+              Row(
+                children: chartData['korea']!.map((element) {
+                  String imageUrl = element['imageUrl']!;
+                  String name = element['name']!;
+                  String artist = element['artist']!;
+                  return Column(
+                    children: [
+                      Image.network(
+                        imageUrl,
+                        width: MediaQuery.of(context).size.width * 0.29,
+                      ),
+                      Text(
+                        name,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(artist),
+                    ],
+                  );
+                }).toList(),
+              )
+            ],
+          ),
+        )
+      ],
+    ));
   }
 }
