@@ -54,6 +54,7 @@ class _HomePageState extends State<HomePage> {
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
                   child: Column(
                     children: [
+                      SizedBox(height: 11),
                       Container(
                         alignment: Alignment.topCenter,
                         child: TabPageSelector(
@@ -118,7 +119,103 @@ class FirstTab extends StatelessWidget {
       },
     ];
 
-    return Center(child: Text('첫번째 페이지'));
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          children: [
+            SizedBox(height: 6),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(Icons.settings),
+                ),
+                Text(
+                  "라이브러리",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Icon(null),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 11),
+                child: Row(
+                  children: [
+                    ImageIcon(
+                      NetworkImage("https://i.ibb.co/hxNbZ8p/shazam.png"),
+                      size: 18,
+                    ),
+                    SizedBox(width: 12),
+                    Text(
+                      "Shazam",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Divider(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 11),
+                child: Row(
+                  children: [
+                    ImageIcon(
+                      NetworkImage("https://i.ibb.co/hxNbZ8p/shazam.png"),
+                      size: 18,
+                    ),
+                    SizedBox(width: 12),
+                    Text(
+                      "Shazam",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Divider(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 11),
+                child: Row(
+                  children: [
+                    ImageIcon(
+                      NetworkImage("https://i.ibb.co/hxNbZ8p/shazam.png"),
+                      size: 18,
+                    ),
+                    SizedBox(width: 12),
+                    Text(
+                      "Shazam",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Divider(),
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -344,39 +441,136 @@ class ThirdTab extends StatelessWidget {
                 height: 8,
                 color: Colors.grey[400],
               ),
-              Row(
-                children: [
-                  Text(
-                    "대한민국차트",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  Spacer(),
-                  Text(
-                    "모두 보기",
-                    style: TextStyle(color: Colors.blue),
-                  )
-                ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Text(
+                      "대한민국차트",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    Spacer(),
+                    Text(
+                      "모두 보기",
+                      style: TextStyle(color: Colors.blue),
+                    )
+                  ],
+                ),
               ),
               Row(
                 children: chartData['korea']!.map((element) {
                   String imageUrl = element['imageUrl']!;
                   String name = element['name']!;
                   String artist = element['artist']!;
-                  return Column(
-                    children: [
-                      Image.network(
-                        imageUrl,
-                        width: MediaQuery.of(context).size.width * 0.29,
-                      ),
-                      Text(
-                        name,
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      Text(artist),
-                    ],
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.network(
+                          imageUrl,
+                          width: MediaQuery.of(context).size.width * 0.29,
+                        ),
+                        Text(
+                          name,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text(artist),
+                      ],
+                    ),
                   );
                 }).toList(),
-              )
+              ),
+              Container(
+                width: double.infinity,
+                height: 8,
+                color: Colors.grey[400],
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Text(
+                      "대한민국차트",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    Spacer(),
+                    Text(
+                      "모두 보기",
+                      style: TextStyle(color: Colors.blue),
+                    )
+                  ],
+                ),
+              ),
+              Row(
+                children: chartData['global']!.map((element) {
+                  String imageUrl = element['imageUrl']!;
+                  String name = element['name']!;
+                  String artist = element['artist']!;
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.network(
+                          imageUrl,
+                          width: MediaQuery.of(context).size.width * 0.29,
+                        ),
+                        Text(
+                          name,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text(artist),
+                      ],
+                    ),
+                  );
+                }).toList(),
+              ),
+              Container(
+                width: double.infinity,
+                height: 8,
+                color: Colors.grey[400],
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Text(
+                      "대한민국차트",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    Spacer(),
+                    Text(
+                      "모두 보기",
+                      style: TextStyle(color: Colors.blue),
+                    )
+                  ],
+                ),
+              ),
+              Row(
+                children: chartData['newyork']!.map((element) {
+                  String imageUrl = element['imageUrl']!;
+                  String name = element['name']!;
+                  String artist = element['artist']!;
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.network(
+                          imageUrl,
+                          width: MediaQuery.of(context).size.width * 0.29,
+                        ),
+                        Text(
+                          name,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text(artist),
+                      ],
+                    ),
+                  );
+                }).toList(),
+              ),
             ],
           ),
         )
