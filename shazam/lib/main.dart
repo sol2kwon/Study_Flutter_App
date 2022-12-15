@@ -123,6 +123,7 @@ class FirstTab extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 6),
             Row(
@@ -169,16 +170,13 @@ class FirstTab extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 11),
+                padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: Row(
                   children: [
-                    ImageIcon(
-                      NetworkImage("https://i.ibb.co/hxNbZ8p/shazam.png"),
-                      size: 18,
-                    ),
+                    Icon(Icons.person_rounded),
                     SizedBox(width: 12),
                     Text(
-                      "Shazam",
+                      "아티스트",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -192,16 +190,13 @@ class FirstTab extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 11),
+                padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: Row(
                   children: [
-                    ImageIcon(
-                      NetworkImage("https://i.ibb.co/hxNbZ8p/shazam.png"),
-                      size: 18,
-                    ),
-                    SizedBox(width: 12),
+                    Icon(Icons.music_note),
+                    SizedBox(width: 10),
                     Text(
-                      "Shazam",
+                      "회원님을 위한 재생 목록",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -212,6 +207,94 @@ class FirstTab extends StatelessWidget {
               ),
             ),
             Divider(),
+            SizedBox(height: 16),
+            Text(
+              "최근 Shazam",
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 18,
+              ),
+            ),
+            SizedBox(height: 16),
+            Expanded(
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 3 / 5,
+                ),
+                itemCount: songs.length,
+                itemBuilder: (context, index) {
+                  var song = songs[index];
+                  String imageUrl = song['imageUrl']!;
+                  String title = song['title']!;
+                  String artist = song['artist']!;
+                  return Container(
+                    margin: EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(8),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            blurRadius: 1,
+                            spreadRadius: 1,
+                          )
+                        ]),
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(8),
+                            topRight: Radius.circular(8),
+                          ),
+                          child: Image.network(
+                            imageUrl,
+                            fit: BoxFit.cover,
+                            height: MediaQuery.of(context).size.width *
+                                0.5 *
+                                5 /
+                                3 *
+                                0.55,
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              width: double.infinity,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    title,
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    artist,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey[600],
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Image.network(
+                                      "https://i.ibb.co/KG9m5QS/applemusic.png",
+                                      width: 60),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
